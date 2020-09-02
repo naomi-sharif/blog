@@ -1,3 +1,7 @@
 <template>
-  <div>This is the Nav component</div>
+  <nav>
+    <span>Sun icon</span>
+    <span>Naomi Sharif</span>
+    <span>Hamburger</span>
+  </nav>
 </template>

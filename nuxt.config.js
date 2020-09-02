@@ -33,8 +33,13 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    // Doc: https://github.com/nuxt-community/style-resources-module
+    '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    scss: ['assets/vars/_colors.scss']
+  },
   /*
    ** Nuxt.js modules
    */
