@@ -2,8 +2,8 @@
   <div class="wrapper"><slot /></div>
 </template>
 
-<style lang="scss">
+<style>
 .wrapper {
-  background-color: red;
+  background-color: var(--primary-color);
 }
 </style>
