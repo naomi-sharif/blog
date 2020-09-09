@@ -1,16 +1,18 @@
 <template>
   <div :class="{ layout: true, 'layout--light': !darkModeEnabled }">
-    <AppNav @darkModeToggled="onToggleDarkMode()" />
+    <AppWrapper>
+      <AppNav @darkModeToggled="onToggleDarkMode()" />
+    </AppWrapper>
     <nuxt />
   </div>
 </template>
 
 <script>
 import AppNav from '~/components/Nav.vue'
+import AppWrapper from '~/components/Wrapper.vue'
 
 export default {
-  components: { AppNav },
-
+  components: { AppWrapper, AppNav },
   data() {
     return {
       darkModeEnabled: true
@@ -26,6 +28,10 @@ export default {
 </script>
 
 <style lang="scss">
+body {
+  margin: 0;
+}
+
 .layout {
   --primary-color: #160049;
   --secondary-color: #462689;
