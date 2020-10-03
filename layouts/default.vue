@@ -2,8 +2,8 @@
   <div :class="{ layout: true, 'layout--light': !darkModeEnabled }">
     <AppWrapper>
       <AppNav @darkModeToggled="onToggleDarkMode()" />
+      <nuxt />
     </AppWrapper>
-    <nuxt />
   </div>
 </template>
 
@@ -38,6 +38,9 @@ body {
   --text-color: #ffffff;
   --icons-color: #ffffff;
   --accent-global: #dc3187;
+
+  font-family: 'Roboto', sans-serif;
+  color: var(--text-color);
 }
 
 .layout.layout--light {
