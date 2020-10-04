@@ -3,9 +3,14 @@
 </template>
 
 <style lang="scss">
+@import '~/assets/scss/mixins';
 .main-heading {
   font-weight: bold;
   font-size: 40px;
   text-align: center;
+
+  @include desktop {
+    text-align: left;
+  }
 }
 </style>
