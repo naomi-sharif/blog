@@ -60,7 +60,7 @@ export default {
         imports: [
           {
             set: '@fortawesome/pro-solid-svg-icons',
-            icons: ['faSun', 'faBars']
+            icons: ['faSun', 'faBars', 'faArrowRight']
           },
           {
             set: '@fortawesome/free-brands-svg-icons',
