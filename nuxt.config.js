@@ -44,9 +44,6 @@ export default {
     // Doc: https://github.com/nuxt-community/style-resources-module
     '@nuxtjs/style-resources'
   ],
-  styleResources: {
-    scss: ['assets/vars/_colors.scss']
-  },
   /*
    ** Nuxt.js modules
    */
@@ -63,7 +60,11 @@ export default {
         imports: [
           {
             set: '@fortawesome/pro-solid-svg-icons',
-            icons: ['faSun', 'faEclipseAlt', 'faBars']
+            icons: ['faSun', 'faBars']
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['faLinkedin', 'faGithub']
           }
         ]
       }

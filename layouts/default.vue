@@ -38,7 +38,6 @@ body {
   --text-color: #ffffff;
   --icons-color: #ffffff;
   --accent-global: #dc3187;
-
   font-family: 'Roboto', sans-serif;
   color: var(--text-color);
 }

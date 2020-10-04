@@ -1,17 +1,33 @@
 <template>
   <nav class="nav">
-    <AppDarkModeButton @click="onToggleDarkMode()" />
-    <AppHomeButton />
-    <AppHamburgerToggle />
+    <AppContainer>
+      <div class="nav__container">
+        <a class="nav__social-link" href="#"
+          ><FaIcon :icon="['fab', 'linkedin']"
+        /></a>
+        <a class="nav__social-link" href="#"
+          ><FaIcon :icon="['fab', 'github']"
+        /></a>
+        <AppDarkModeButton @click="onToggleDarkMode()" />
+        <AppHomeButton />
+        <AppHamburgerToggle />
+      </div>
+    </AppContainer>
   </nav>
 </template>
 
 <script>
+import AppContainer from '~/components/Container'
 import AppDarkModeButton from '~/components/DarkModeButton.vue'
 import AppHamburgerToggle from '~/components/HamburgerToggle'
 import AppHomeButton from '~/components/HomeButton'
 export default {
-  components: { AppDarkModeButton, AppHomeButton, AppHamburgerToggle },
+  components: {
+    AppDarkModeButton,
+    AppHomeButton,
+    AppHamburgerToggle,
+    AppContainer
+  },
   methods: {
     onToggleDarkMode() {
       this.$emit('darkModeToggled')
@@ -20,10 +36,27 @@ export default {
 }
 </script>
 <style lang="scss">
+@import '~/assets/scss/mixins';
+
 .nav {
+  padding: 1rem 0;
+}
+
+.nav__container {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
   align-items: center;
+}
+
+.nav__social-link {
+  display: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  color: var(--text-color);
+
+  @include desktop {
+    display: inline;
+  }
 }
 </style>
