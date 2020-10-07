@@ -1,16 +1,14 @@
 <template>
   <div>
-    <AppFeaturedBlogPost />
-    <AppBlogPostContainer />
+    <AppFeaturedArticleSplash />
   </div>
 </template>
 
 <script>
-import AppFeaturedBlogPost from '~/components/FeaturedBlogPost.vue'
-import AppBlogPostContainer from '~/components/BlogPostContainer.vue'
+import AppFeaturedArticleSplash from '~/components/FeaturedArticleSplash.vue'
 
 export default {
-  components: { AppFeaturedBlogPost, AppBlogPostContainer }
+  components: { AppFeaturedArticleSplash }
 }
 </script>
 
