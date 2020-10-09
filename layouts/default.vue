@@ -28,14 +28,17 @@ export default {
 </script>
 
 <style lang="scss">
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: anti-aliased;
 }
 
 .layout {
   --primary-color: #160049;
   --secondary-color: #462689;
-  --text-color: #ffffff;
+  --text-color: #ededed;
   --icons-color: #ffffff;
   --accent-global: #dc3187;
   font-family: 'Roboto', sans-serif;
