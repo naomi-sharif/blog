@@ -5,7 +5,12 @@
         <AppLabel />
         <article>
           <AppMainHeading />
-          <AppBodyText>This will be the body text</AppBodyText>
+          <AppBodyText
+            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque
+            soluta similique excepturi obcaecati ducimus molestiae suscipit.
+            Fuga dolore ipsum ab laudantium impedit porro ducimus dicta at
+            distinctio, facilis earum vitae.</AppBodyText
+          >
         </article>
         <a class="featured-article-splash__link" href="#">
           <FaIcon
