@@ -1,5 +1,5 @@
 <template>
-  <div class="label">Featured</div>
+  <div class="label"><slot /></div>
 </template>
 
 <style lang="scss">
@@ -10,5 +10,6 @@
   font-size: 20px;
   display: inline-block;
   border-radius: 15px;
+  margin: 0.5rem;
 }
 </style>
