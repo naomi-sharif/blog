@@ -1,6 +1,16 @@
 <template>
-  <h1 class="main-heading">Travelling in style, learning along the way...</h1>
+  <h1 :class="{ 'main-heading': true, 'main-heading--left': left }">
+    Travelling in style, learning along the way...
+  </h1>
 </template>
+
+<script>
+export default {
+  props: {
+    left: { type: Boolean, default: false, required: false }
+  }
+}
+</script>
 
 <style lang="scss">
 @import '~/assets/scss/mixins';
@@ -8,8 +18,13 @@
   font-weight: bold;
   font-size: 40px;
   text-align: center;
+  margin-bottom: 1rem;
 
   @include desktop {
+    text-align: left;
+  }
+
+  &--left {
     text-align: left;
   }
 }
