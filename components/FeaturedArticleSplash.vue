@@ -2,7 +2,7 @@
   <AppContainer>
     <div class="featured-article-splash">
       <div class="featured-article-splash__content">
-        <AppLabel />
+        <AppLabel>Featured</AppLabel>
         <article>
           <AppMainHeading />
           <AppBodyText
