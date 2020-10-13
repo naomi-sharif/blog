@@ -3,17 +3,21 @@
     <header>
       <img
         class="article-card__image"
-        src="https://via.placeholder.com/500x200"
+        :src="
+          article.cover_image
+            ? article.cover_image
+            : 'https://via.placeholder.com/500x200'
+        "
         alt=""
       />
-      <time class="article-card__date" datetime="2020-10-07">2020-10-07</time>
-      <h1 class="article-card__heading">Article heading here</h1>
+      <time
+        class="article-card__date"
+        :datetime="article.published_timestamp"
+        >{{ article.published_timestamp }}</time
+      >
+      <h1 class="article-card__heading">{{ article.title }}</h1>
     </header>
-    <AppBodyText>
-      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Assumenda
-      ducimus impedit dolorum commodi vel omnis, unde eos ipsum tempore quae
-      quaerat amet. Quos, culpa cum explicabo quas quidem recusandae est.
-    </AppBodyText>
+    <AppBodyText>{{ article.description }}</AppBodyText>
   </article>
 </template>
 
@@ -23,6 +27,12 @@ import AppBodyText from '~/components/BodyText'
 export default {
   components: {
     AppBodyText
+  },
+  props: {
+    article: {
+      type: Object,
+      required: true
+    }
   }
 }
 </script>

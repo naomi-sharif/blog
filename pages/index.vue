@@ -2,11 +2,11 @@
   <div>
     <AppFeaturedArticleSplash />
     <AppArticleListingContainer>
-      <AppArticleCard />
-      <AppArticleCard />
-      <AppArticleCard />
-      <AppArticleCard />
-      <AppArticleCard />
+      <AppArticleCard
+        v-for="article in articles"
+        :key="article.id"
+        :article="article"
+      />
     </AppArticleListingContainer>
   </div>
 </template>
@@ -22,12 +22,15 @@ export default {
     AppArticleListingContainer,
     AppArticleCard
   },
+  data() {
+    return {
+      articles: []
+    }
+  },
   created() {
-    this.$axios
-      .get('/api/dev-to/articles/naomisharif/test-article-51ii')
-      .then(function(response) {
-        console.log(response)
-      })
+    this.$axios.get('/api/dev-to/articles/me/published').then((response) => {
+      this.articles = response.data
+    })
   }
 }
 </script>
