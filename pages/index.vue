@@ -21,6 +21,13 @@ export default {
     AppFeaturedArticleSplash,
     AppArticleListingContainer,
     AppArticleCard
+  },
+  created() {
+    this.$axios
+      .get('/api/dev-to/articles/naomisharif/test-article-51ii')
+      .then(function(response) {
+        console.log(response)
+      })
   }
 }
 </script>
