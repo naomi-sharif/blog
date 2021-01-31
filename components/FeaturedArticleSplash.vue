@@ -1,16 +1,19 @@
 <template>
   <AppContainer>
     <div class="featured-article-splash">
-      <div class="featured-article-splash__content">
-        <AppLabel>Featured</AppLabel>
+      <div v-if="featuredArticle" class="featured-article-splash__content">
+        <AppLabelContainer>
+          <AppLabel v-for="tag in featuredArticle.tag_list" :key="tag">{{
+            tag
+          }}</AppLabel>
+        </AppLabelContainer>
         <article>
-          <AppMainHeading />
-          <AppBodyText
-            >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque
-            soluta similique excepturi obcaecati ducimus molestiae suscipit.
-            Fuga dolore ipsum ab laudantium impedit porro ducimus dicta at
-            distinctio, facilis earum vitae.</AppBodyText
-          >
+          <AppMainHeading v-if="featuredArticle">
+            {{ featuredArticle.title }}
+          </AppMainHeading>
+          <AppBodyText v-html="stripMarkdown" />
+          <!-- {{ articleExcerpt }} -->
+          <!-- </AppBodyText> -->
         </article>
         <a class="featured-article-splash__link" href="#">
           <FaIcon
@@ -33,6 +36,7 @@
 
 <script>
 import AppContainer from '~/components/Container'
+import AppLabelContainer from '~/components/AppLabelContainer.vue'
 import AppLabel from '~/components/Label.vue'
 import AppMainHeading from '~/components/MainHeading'
 import AppBodyText from '~/components/BodyText'
@@ -41,10 +45,38 @@ import AppIllustration from '~/components/Illustration'
 export default {
   components: {
     AppContainer,
+    AppLabelContainer,
     AppLabel,
     AppMainHeading,
     AppBodyText,
     AppIllustration
+  },
+
+  data() {
+    return { articles: [] }
+  },
+
+  computed: {
+    featuredArticle() {
+      return this.articles.find((article) => {
+        return article.tag_list.includes('featured')
+      })
+    },
+    articleExcerpt() {
+      return this.featuredArticle.body_markdown.length < 400
+        ? this.featuredArticle.body_markdown
+        : this.featuredArticle.body_markdown.slice(0, 400).concat('...')
+    },
+
+    stripMarkdown() {
+      return this.articleExcerpt.replace(/\*+/gm, '')
+    }
+  },
+
+  created() {
+    this.$axios.get('/api/dev-to/articles/me/published').then((response) => {
+      this.articles = response.data
+    })
   }
 }
 </script>
