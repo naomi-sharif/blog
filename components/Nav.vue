@@ -8,9 +8,8 @@
         <a class="nav__social-link" href="#"
           ><FaIcon :icon="['fab', 'github']"
         /></a>
-        <AppDarkModeButton @click="onToggleDarkMode()" />
         <AppHomeButton />
-        <AppHamburgerToggle />
+        <AppDarkModeButton @click="onToggleDarkMode()" />
       </div>
     </AppContainer>
   </nav>
@@ -19,13 +18,11 @@
 <script>
 import AppContainer from '~/components/Container'
 import AppDarkModeButton from '~/components/DarkModeButton.vue'
-import AppHamburgerToggle from '~/components/HamburgerToggle'
 import AppHomeButton from '~/components/HomeButton'
 export default {
   components: {
     AppDarkModeButton,
     AppHomeButton,
-    AppHamburgerToggle,
     AppContainer
   },
   methods: {
@@ -50,13 +47,9 @@ export default {
 }
 
 .nav__social-link {
-  display: none;
+  display: inline;
   font-size: 2rem;
   padding: 0.5rem 1rem;
   color: var(--text-color);
-
-  @include desktop {
-    display: inline;
-  }
 }
 </style>
