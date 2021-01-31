@@ -1,24 +1,26 @@
 <template>
-  <article class="article-card">
-    <header>
-      <img
-        class="article-card__image"
-        :src="
-          article.cover_image
-            ? article.cover_image
-            : 'https://via.placeholder.com/500x200'
-        "
-        alt=""
-      />
-      <time
-        class="article-card__date"
-        :datetime="article.published_timestamp"
-        >{{ article.published_timestamp }}</time
-      >
-      <h1 class="article-card__heading">{{ article.title }}</h1>
-    </header>
-    <AppBodyText>{{ article.description }}</AppBodyText>
-  </article>
+  <a :href="`/blog/${article.slug}`">
+    <article class="article-card">
+      <header>
+        <img
+          class="article-card__image"
+          :src="
+            article.cover_image
+              ? article.cover_image
+              : 'https://via.placeholder.com/500x200'
+          "
+          alt=""
+        />
+        <time
+          class="article-card__date"
+          :datetime="article.published_timestamp"
+          >{{ article.published_timestamp }}</time
+        >
+        <h1 class="article-card__heading">{{ article.title }}</h1>
+      </header>
+      <AppBodyText>{{ article.description }}</AppBodyText>
+    </article>
+  </a>
 </template>
 
 <script>
