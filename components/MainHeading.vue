@@ -1,6 +1,6 @@
 <template>
   <h1 :class="{ 'main-heading': true, 'main-heading--left': left }">
-    Travelling in style, learning along the way...
+    <slot />
   </h1>
 </template>
 
