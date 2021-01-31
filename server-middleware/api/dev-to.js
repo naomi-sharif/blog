@@ -6,7 +6,7 @@ export default async function(req, res) {
     `https://dev.to/api/${req.url}`,
     {
       // Three seconds
-      timeout: 1000 * 3,
+      timeout: 10000 * 3,
       headers: {
         'api-key': process.env.DEV_TO_API_KEY
       }
