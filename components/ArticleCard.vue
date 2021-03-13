@@ -1,5 +1,5 @@
 <template>
-  <a :href="`/blog/${article.slug}`">
+  <a class="article" :href="`/blog/${article.slug}`">
     <article class="article-card">
       <header>
         <img
@@ -14,7 +14,7 @@
         <time
           class="article-card__date"
           :datetime="article.published_timestamp"
-          >{{ article.published_timestamp }}</time
+          >{{ formattedDate(article.published_timestamp) }}</time
         >
         <h1 class="article-card__heading">{{ article.title }}</h1>
       </header>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { format } from 'date-fns'
 import AppBodyText from '~/components/BodyText'
 
 export default {
@@ -35,12 +36,22 @@ export default {
       type: Object,
       required: true
     }
+  },
+  methods: {
+    formattedDate: (date) => {
+      return format(new Date(date), 'do MMMM yyyy')
+    }
   }
 }
 </script>
 
 <style lang="scss">
 @import '~/assets/scss/mixins';
+.article {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
 .article-card {
   display: flex;
   flex-direction: column;

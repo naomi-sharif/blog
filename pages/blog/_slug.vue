@@ -15,7 +15,11 @@
         </template>
         <AppImage
           slot="right"
-          src="https://via.placeholder.com/500x200"
+          :src="
+            article.cover_image
+              ? article.cover_image
+              : 'https://via.placeholder.com/500x200'
+          "
           alt=""
         />
       </AppArticleHeader>

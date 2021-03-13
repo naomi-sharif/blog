@@ -2,10 +2,16 @@
   <nav class="nav">
     <AppContainer>
       <div class="nav__container">
-        <a class="nav__social-link" href="#"
+        <a
+          class="nav__social-link"
+          href="https://www.linkedin.com/in/naomi-sharif/"
+          target="_blank"
           ><FaIcon :icon="['fab', 'linkedin']"
         /></a>
-        <a class="nav__social-link" href="#"
+        <a
+          target="_blank"
+          class="nav__social-link"
+          href="https://github.com/naomi-sharif"
           ><FaIcon :icon="['fab', 'github']"
         /></a>
         <AppHomeButton />

@@ -15,7 +15,10 @@
           <!-- {{ articleExcerpt }} -->
           <!-- </AppBodyText> -->
         </article>
-        <a class="featured-article-splash__link" href="#">
+        <a
+          :href="`/blog/${featuredArticle.slug}`"
+          class="featured-article-splash__link"
+        >
           <FaIcon
             class="featured-article-splash__link-icon"
             :icon="['fa', 'arrow-right']"

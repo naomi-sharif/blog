@@ -23,6 +23,7 @@ export default {
   border: none;
   outline: none;
   padding: 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .dark-mode-toggle__icon {
