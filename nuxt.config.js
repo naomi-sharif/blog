@@ -14,7 +14,14 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        href:
+          'https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap',
+        rel: 'stylesheet'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -33,7 +40,9 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    // Doc: https://github.com/nuxt-community/style-resources-module
+    '@nuxtjs/style-resources'
   ],
   /*
    ** Nuxt.js modules
@@ -42,13 +51,36 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // Doc: https://www.npmjs.com/package/nuxt-fontawesome
+    [
+      'nuxt-fontawesome',
+      {
+        component: 'FaIcon',
+        imports: [
+          {
+            set: '@fortawesome/pro-solid-svg-icons',
+            icons: ['faSun', 'faBars', 'faArrowRight']
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['faLinkedin', 'faGithub']
+          }
+        ]
+      }
+    ]
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  /*
+   ** Server middleware registration
+   */
+  serverMiddleware: [
+    { path: '/api/dev-to/', handler: '~/server-middleware/api/dev-to.js' }
+  ],
   /*
    ** Build configuration
    */
