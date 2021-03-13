@@ -4,73 +4,27 @@
       <AppArticleHeader>
         <template slot="left">
           <AppLabelContainer>
-            <AppLabel>Javascript</AppLabel>
-            <AppLabel>React</AppLabel>
-            <AppLabel>Begginer</AppLabel>
+            <AppLabel
+              v-for="articleTag in article.tags"
+              :key="articleTag"
+              :article-tag="articleTag"
+              >{{ articleTag }}</AppLabel
+            >
           </AppLabelContainer>
-          <AppMainHeading left />
+          <AppMainHeading left>{{ article.title }}</AppMainHeading>
         </template>
         <AppImage
           slot="right"
-          src="https://via.placeholder.com/500x200"
+          :src="
+            article.cover_image
+              ? article.cover_image
+              : 'https://via.placeholder.com/500x200'
+          "
           alt=""
         />
       </AppArticleHeader>
       <AppArticleBody>
-        <AppBodyText margin left
-          >Lorem ipsum dolor sit amet consectetur ita adipisicing elit. Officiis
-          inventore tenetur dia cupiditate praesentium dicta dolorum eum
-          excepturi nulla nostrum optio, aspernatur tag accusantium consequatur,
-          mollitia cumque animi obcaecati laboriosam reiciendis ipsam. Lorem
-          ipsum dolor sit amet consectetur thus adipisicing elit. Officiis
-          inventore tenetur cupiditate praesentium dicta dolorum eum excepturi
-          nulla nostrum optio, aspernatur accusantium consequatur thus, mollitia
-          cumque animi obcaecati laboriosam reiciendis ipsam. Lorem ipsum dolor
-          sit amet consectetur thus adipisicing elit. Officiis inventore tenetur
-          cupiditate praesentium dicta dolorum eum excepturi nulla nostrum
-          optio, aspernatur accusantium consequatur, mollitia cumque animi
-          obcaecati laboriosam reiciendis ipsam. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Officiis inventore tenetur cupiditate
-          praesentium dicta dolorum eum excepturi nulla nostrum optio,
-          aspernatur accusantium consequatur, mollitia cumque animi obcaecati
-          laboriosam reiciendis ipsam.
-        </AppBodyText>
-        <AppBodyText margin left
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-          inventore tenetur cupiditate praesentium dicta dolorum eum excepturi
-          nulla nostrum optio, aspernatur accusantium consequatur, mollitia
-          cumque animi obcaecati laboriosam reiciendis ipsam. Lorem ipsum dolor
-          sit amet consectetur adipisicing elit. Officiis inventore tenetur
-          cupiditate praesentium dicta dolorum eum excepturi nulla nostrum
-          optio, aspernatur accusantium consequatur, mollitia cumque animi
-          obcaecati laboriosam reiciendis ipsam. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Officiis inventore tenetur cupiditate
-          praesentium dicta dolorum eum excepturi nulla nostrum optio,
-          aspernatur accusantium consequatur, mollitia cumque animi obcaecati
-          laboriosam reiciendis ipsam. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Officiis inventore tenetur cupiditate praesentium
-          dicta dolorum eum excepturi nulla nostrum optio, aspernatur
-          accusantium consequatur, mollitia cumque animi obcaecati laboriosam
-          reiciendis ipsam.
-        </AppBodyText>
-        <AppBodyText margin left
-          >Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
-          inventore tenetur cupiditate praesentium dicta dolorum eum excepturi
-          nulla nostrum optio, aspernatur accusantium consequatur, mollitia
-          cumque animi obcaecati laboriosam reiciendis ipsam. Lorem ipsum dolor
-          sit amet consectetur adipisicing elit. Officiis inventore tenetur
-          cupiditate praesentium dicta dolorum eum excepturi nulla nostrum
-          optio, aspernatur accusantium consequatur, mollitia cumque animi
-          obcaecati laboriosam reiciendis ipsam. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Officiis inventore tenetur cupiditate
-          praesentium dicta dolorum eum excepturi nulla nostrum optio,
-          aspernatur accusantium consequatur, mollitia cumque animi obcaecati
-          laboriosam reiciendis ipsam. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Officiis inventore tenetur cupiditate praesentium
-          dicta dolorum eum excepturi nulla nostrum optio, aspernatur
-          accusantium consequatur, mollitia cumque animi obcaecati laboriosam
-          reiciendis ipsam.
-        </AppBodyText>
+        <AppContentBody v-html="article.body_html" />
       </AppArticleBody>
     </article>
   </AppContainer>
@@ -83,8 +37,8 @@ import AppLabelContainer from '~/components/AppLabelContainer.vue'
 import AppContainer from '~/components/Container.vue'
 import AppMainHeading from '~/components/MainHeading.vue'
 import AppImage from '~/components/Image.vue'
-import AppBodyText from '~/components/BodyText.vue'
 import AppArticleBody from '~/components/AppArticleBody.vue'
+import AppContentBody from '~/components/AppContentBody.vue'
 export default {
   components: {
     AppArticleHeader,
@@ -93,13 +47,21 @@ export default {
     AppMainHeading,
     AppContainer,
     AppImage,
-    AppBodyText,
-    AppArticleBody
+    AppArticleBody,
+    AppContentBody
   },
   data() {
     return {
-      slug: this.$route.params.slug
+      slug: this.$route.params.slug,
+      article: ''
     }
+  },
+  created() {
+    this.$axios
+      .get(`/api/dev-to/articles/naomisharif/${this.$route.params.slug}`)
+      .then((response) => {
+        this.article = response.data
+      })
   }
 }
 </script>

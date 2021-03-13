@@ -2,11 +2,11 @@
   <div>
     <AppFeaturedArticleSplash />
     <AppArticleListingContainer>
-      <AppArticleCard />
-      <AppArticleCard />
-      <AppArticleCard />
-      <AppArticleCard />
-      <AppArticleCard />
+      <AppArticleCard
+        v-for="article in articles"
+        :key="article.id"
+        :article="article"
+      />
     </AppArticleListingContainer>
   </div>
 </template>
@@ -21,6 +21,16 @@ export default {
     AppFeaturedArticleSplash,
     AppArticleListingContainer,
     AppArticleCard
+  },
+  data() {
+    return {
+      articles: []
+    }
+  },
+  created() {
+    this.$axios.get('/api/dev-to/articles/me/published').then((response) => {
+      this.articles = response.data
+    })
   }
 }
 </script>

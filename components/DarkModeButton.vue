@@ -23,10 +23,7 @@ export default {
   border: none;
   outline: none;
   padding: 0.5rem 1rem;
-
-  @include desktop {
-    order: 1;
-  }
+  cursor: pointer;
 }
 
 .dark-mode-toggle__icon {

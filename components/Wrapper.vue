@@ -5,5 +5,6 @@
 <style>
 .wrapper {
   background-color: var(--primary-color);
+  min-height: 100vh;
 }
 </style>

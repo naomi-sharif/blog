@@ -1,17 +1,15 @@
 <template>
-  <div class="home-button">
-    <button class="home-button__icon">Naomi Sharif</button>
-  </div>
+  <a href="/" class="home-icon">Naomi Sharif</a>
 </template>
 
 <script></script>
 <style lang="scss">
-.home-button {
+.home-icon {
   width: 100%;
   text-align: center;
 }
 
-.home-button__icon {
+.home-icon {
   font-weight: bold;
   font-family: 'Roboto', sans-serif;
   border: none;

@@ -76,6 +76,12 @@ export default {
    */
   axios: {},
   /*
+   ** Server middleware registration
+   */
+  serverMiddleware: [
+    { path: '/api/dev-to/', handler: '~/server-middleware/api/dev-to.js' }
+  ],
+  /*
    ** Build configuration
    */
   build: {
